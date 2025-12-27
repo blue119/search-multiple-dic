@@ -18,8 +18,11 @@ function createWindow() {
     }
   });
 
-  // Load the index.html file
-  mainWindow.loadFile('index.html');
+  // Maximize the window
+  mainWindow.maximize();
+
+  // Load dictionary.com
+  mainWindow.loadURL('https://www.dictionary.com');
 
   // Open DevTools in development mode (optional)
   // mainWindow.webContents.openDevTools();
