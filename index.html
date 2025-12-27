@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Electron Demo App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Electron!</h1>
+        <p class="subtitle">A simple demo application</p>
+
+        <div class="info-box">
+            <h2>App Information</h2>
+            <p><strong>Version:</strong> <span id="version">Loading...</span></p>
+            <p><strong>Platform:</strong> <span id="platform">Loading...</span></p>
+            <p><strong>Node.js:</strong> <span id="node-version"></span></p>
+            <p><strong>Chromium:</strong> <span id="chrome-version"></span></p>
+            <p><strong>Electron:</strong> <span id="electron-version"></span></p>
+        </div>
+
+        <div class="demo-section">
+            <h2>Interactive Demo</h2>
+            <button id="demo-button">Click Me!</button>
+            <p id="click-count">Clicks: 0</p>
+        </div>
+
+        <div class="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Cross-platform desktop application</li>
+                <li>Built with HTML, CSS, and JavaScript</li>
+                <li>Secure IPC communication</li>
+                <li>Context isolation enabled</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
