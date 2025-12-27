@@ -6,6 +6,16 @@ const cambridgeWebview = document.getElementById('cambridge-webview');
 const merriamWebview = document.getElementById('merriam-webview');
 const collinsWebview = document.getElementById('collins-webview');
 
+// Enable audio for each webview
+const webviews = [urbanWebview, cambridgeWebview, merriamWebview, collinsWebview];
+
+webviews.forEach(webview => {
+    webview.addEventListener('dom-ready', () => {
+        // Set audio to be unmuted
+        webview.setAudioMuted(false);
+    });
+});
+
 function searchWord() {
     const word = searchInput.value.trim();
 
