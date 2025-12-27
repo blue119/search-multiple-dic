@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Menu } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu, session } = require('electron');
 const path = require('path');
 
 let mainWindow;
@@ -16,6 +16,16 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
       webviewTag: true
+    }
+  });
+
+  // Enable audio playback in webviews
+  session.defaultSession.setPermissionRequestHandler((webContents, permission, callback) => {
+    const allowedPermissions = ['media', 'audioCapture', 'videoCapture'];
+    if (allowedPermissions.includes(permission)) {
+      callback(true); // Grant permission
+    } else {
+      callback(false); // Deny permission
     }
   });
 
