@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Enter a word to search...">
+        <button id="search-button">Search</button>
+    </div>
     <div class="split-container">
         <div class="pane top-pane">
             <webview id="dictionary-webview" src="https://www.dictionary.com"></webview>
@@ -15,5 +19,6 @@
             <webview id="merriam-webview" src="https://www.merriam-webster.com"></webview>
         </div>
     </div>
+    <script src="renderer.js"></script>
 </body>
 </html>

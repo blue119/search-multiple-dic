@@ -1,33 +1,32 @@
-// This file runs in the renderer process (browser context)
+// Dictionary search functionality
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+const dictionaryWebview = document.getElementById('dictionary-webview');
+const merriamWebview = document.getElementById('merriam-webview');
 
-// Display version information
-document.getElementById('node-version').textContent = process.versions.node;
-document.getElementById('chrome-version').textContent = process.versions.chrome;
-document.getElementById('electron-version').textContent = process.versions.electron;
+function searchWord() {
+    const word = searchInput.value.trim();
 
-// Get app version and platform from main process via IPC
-window.electronAPI.getAppVersion().then(version => {
-    document.getElementById('version').textContent = version;
+    if (word) {
+        // Update both webviews with search URLs
+        dictionaryWebview.src = `https://www.dictionary.com/browse/${encodeURIComponent(word)}`;
+        merriamWebview.src = `https://www.merriam-webster.com/dictionary/${encodeURIComponent(word)}`;
+    }
+}
+
+// Search on button click
+searchButton.addEventListener('click', searchWord);
+
+// Search on Enter key press
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchWord();
+    }
 });
 
-window.electronAPI.getPlatform().then(platform => {
-    document.getElementById('platform').textContent = platform;
+// Focus on input when page loads
+window.addEventListener('DOMContentLoaded', () => {
+    searchInput.focus();
 });
 
-// Interactive demo: Click counter
-let clickCount = 0;
-const button = document.getElementById('demo-button');
-const countDisplay = document.getElementById('click-count');
-
-button.addEventListener('click', () => {
-    clickCount++;
-    countDisplay.textContent = `Clicks: ${clickCount}`;
-
-    // Add a fun animation effect
-    button.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-        button.style.transform = 'scale(1)';
-    }, 100);
-});
-
-console.log('Electron Demo App Loaded Successfully!');
+console.log('Dictionary Viewer Loaded Successfully!');
