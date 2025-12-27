@@ -11,12 +11,22 @@
         <input type="text" id="search-input" placeholder="Enter a word to search...">
         <button id="search-button">Search</button>
     </div>
-    <div class="split-container">
-        <div class="pane top-pane">
-            <webview id="dictionary-webview" src="https://www.dictionary.com"></webview>
+    <div class="grid-container">
+        <div class="grid-item top-left">
+            <div class="label">Urban Dictionary</div>
+            <webview id="urban-webview" src="https://www.urbandictionary.com"></webview>
         </div>
-        <div class="pane bottom-pane">
+        <div class="grid-item top-right">
+            <div class="label">Cambridge Dictionary</div>
+            <webview id="cambridge-webview" src="https://dictionary.cambridge.org/us/"></webview>
+        </div>
+        <div class="grid-item bottom-left">
+            <div class="label">Merriam-Webster</div>
             <webview id="merriam-webview" src="https://www.merriam-webster.com"></webview>
+        </div>
+        <div class="grid-item bottom-right">
+            <div class="label">Collins Dictionary</div>
+            <webview id="collins-webview" src="https://www.collinsdictionary.com/us/"></webview>
         </div>
     </div>
     <script src="renderer.js"></script>

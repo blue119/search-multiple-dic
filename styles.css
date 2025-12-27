@@ -58,26 +58,37 @@ body {
     background: #21618c;
 }
 
-.split-container {
-    display: flex;
-    flex-direction: column;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     width: 100%;
     flex: 1;
+    gap: 2px;
+    background: #333;
     overflow: hidden;
 }
 
-.pane {
-    width: 100%;
-    height: 50%;
+.grid-item {
     position: relative;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.top-pane {
-    border-bottom: 2px solid #333;
+.label {
+    background: #34495e;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    z-index: 100;
 }
 
 webview {
     width: 100%;
-    height: 100%;
+    flex: 1;
     display: inline-flex;
 }
