@@ -14,15 +14,16 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
-      nodeIntegration: false
+      nodeIntegration: false,
+      webviewTag: true
     }
   });
 
   // Maximize the window
   mainWindow.maximize();
 
-  // Load dictionary.com
-  mainWindow.loadURL('https://www.dictionary.com');
+  // Load the index.html file with split view
+  mainWindow.loadFile('index.html');
 
   // Open DevTools in development mode (optional)
   // mainWindow.webContents.openDevTools();
