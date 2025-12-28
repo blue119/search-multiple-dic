@@ -1,14 +1,20 @@
-# Electron Demo App
+# Multi Dictionary Search
 
-A simple Electron application demonstrating the basic structure and features of an Electron app.
+An Electron app that searches a word across four dictionary sites at once.
 
 ## Features
 
-- Modern Electron architecture with context isolation
-- Secure IPC communication between main and renderer processes
-- Beautiful gradient UI with interactive elements
-- Displays system and app information
-- Click counter demo
+- One search bar updates all dictionary views
+- Four side-by-side webview tiles for quick comparison
+- Cropped views for targeted content on select sites
+- Secure Electron setup with context isolation
+
+## Supported Dictionaries
+
+- Urban Dictionary
+- Cambridge Dictionary
+- Merriam-Webster
+- Collins Dictionary
 
 ## Project Structure
 
@@ -55,11 +61,11 @@ The output is in `dist/`.
 
 ## How It Works
 
-- **main.js**: The main process that creates and manages the application window
-- **preload.js**: Provides a secure bridge between main and renderer processes
-- **index.html**: The user interface
-- **renderer.js**: Frontend JavaScript that runs in the browser context
-- **styles.css**: Visual styling for the application
+- **main.js**: Creates the Electron window and configures permissions
+- **preload.js**: Provides a secure IPC bridge for renderer access
+- **index.html**: Search UI and webview layout
+- **renderer.js**: Search handling and webview updates
+- **styles.css**: UI styling for the search bar and grid layout
 
 ## Security
 
