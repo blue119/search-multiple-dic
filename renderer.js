@@ -2,15 +2,15 @@
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const urbanWebview = document.getElementById("urban-webview");
-const cambridgeWebview = document.getElementById("cambridge-webview");
-const merriamWebview = document.getElementById("merriam-webview");
+const vocabularyWebview = document.getElementById("vocabulary-webview");
+const cambridgeZhtWebview = document.getElementById("cambridge-zht-webview");
 const collinsWebview = document.getElementById("collins-webview");
 
 // Enable audio for each webview
 const webviews = [
   urbanWebview,
-  cambridgeWebview,
-  merriamWebview,
+  vocabularyWebview,
+  cambridgeZhtWebview,
   collinsWebview,
 ];
 
@@ -109,10 +109,10 @@ collinsWebview.addEventListener("dom-ready", () => {
   collinsWebview.executeJavaScript(script, true);
 });
 
-merriamWebview.addEventListener("dom-ready", () => {
+cambridgeZhtWebview.addEventListener("dom-ready", () => {
   const script = `
     (function () {
-      const selector = "#left-content";
+      const selector = "#page-content > div.pr.di.superentry > div.di-body";
       const applyCrop = () => {
         const target = document.querySelector(selector);
         if (!target) return false;
@@ -150,13 +150,13 @@ merriamWebview.addEventListener("dom-ready", () => {
       setTimeout(() => observer.disconnect(), 10000);
     })();
   `;
-  merriamWebview.executeJavaScript(script, true);
+  cambridgeZhtWebview.executeJavaScript(script, true);
 });
 
-cambridgeWebview.addEventListener("dom-ready", () => {
+vocabularyWebview.addEventListener("dom-ready", () => {
   const script = `
     (function () {
-      const selector = "#page-content > div.pr.di.superentry";
+      const selector = "#pageContent > div > div > div.definitionsContainer > div.definition-columns > div.col-1";
       const applyCrop = () => {
         const target = document.querySelector(selector);
         if (!target) return false;
@@ -194,7 +194,7 @@ cambridgeWebview.addEventListener("dom-ready", () => {
       setTimeout(() => observer.disconnect(), 10000);
     })();
   `;
-  cambridgeWebview.executeJavaScript(script, true);
+  vocabularyWebview.executeJavaScript(script, true);
 });
 
 function searchWord() {
@@ -203,8 +203,8 @@ function searchWord() {
   if (word) {
     // Update all four webviews with search URLs
     urbanWebview.src = `https://www.urbandictionary.com/define.php?term=${encodeURIComponent(word)}`;
-    cambridgeWebview.src = `https://dictionary.cambridge.org/us/dictionary/english/${encodeURIComponent(word)}`;
-    merriamWebview.src = `https://www.merriam-webster.com/dictionary/${encodeURIComponent(word)}`;
+    vocabularyWebview.src = `https://www.vocabulary.com/dictionary/${encodeURIComponent(word)}`;
+    cambridgeZhtWebview.src = `https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/${encodeURIComponent(word)}`;
     collinsWebview.src = `https://www.collinsdictionary.com/us/dictionary/english/${encodeURIComponent(word)}`;
   }
 }
