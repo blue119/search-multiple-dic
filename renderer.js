@@ -156,7 +156,7 @@ merriamWebview.addEventListener("dom-ready", () => {
 cambridgeWebview.addEventListener("dom-ready", () => {
   const script = `
     (function () {
-      const selector = "#page-content > div.pr.di.superentry > div.di-body";
+      const selector = "#page-content > div.pr.di.superentry";
       const applyCrop = () => {
         const target = document.querySelector(selector);
         if (!target) return false;
