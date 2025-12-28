@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --enable-logging"
+    "dev": "electron . --enable-logging",
+    "dist": "electron-builder --linux AppImage"
   },
   "keywords": [
     "electron",
@@ -14,6 +15,17 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^28.0.0"
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.ilab.search-multiple-dic",
+    "productName": "SearchMultipleDic",
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "publish": null
   }
 }

@@ -43,6 +43,16 @@ Or with logging enabled:
 npm run dev
 ```
 
+### Packaging (Linux)
+
+Build a single-file AppImage:
+```bash
+npm install
+npm run dist
+```
+
+The output is in `dist/`.
+
 ## How It Works
 
 - **main.js**: The main process that creates and manages the application window
