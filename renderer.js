@@ -21,6 +21,138 @@ webviews.forEach((webview) => {
   });
 });
 
+urbanWebview.addEventListener("dom-ready", () => {
+  const script = `
+    (function () {
+      const selector = "#main-content > div > div.flex.flex-col.lg\\\\:flex-row.mx-0.gap-4 > section";
+      const applyCrop = () => {
+        const target = document.querySelector(selector);
+        if (!target) return false;
+        const chain = [];
+        let node = target;
+        while (node) {
+          chain.push(node);
+          if (node === document.body) break;
+          node = node.parentElement;
+        }
+        chain.reverse();
+        for (let i = 0; i < chain.length - 1; i++) {
+          const current = chain[i];
+          const next = chain[i + 1];
+          Array.from(current.children).forEach((child) => {
+            if (child !== next) {
+              child.style.display = "none";
+            }
+          });
+        }
+        target.style.width = "100%";
+        target.style.maxWidth = "100%";
+        return true;
+      };
+
+      if (applyCrop()) return;
+
+      const observer = new MutationObserver(() => {
+        if (applyCrop()) {
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+
+      setTimeout(() => observer.disconnect(), 10000);
+    })();
+  `;
+  urbanWebview.executeJavaScript(script, true);
+});
+
+collinsWebview.addEventListener("dom-ready", () => {
+  const script = `
+    (function () {
+      const selector = "#main_content > div.res_cell_center";
+      const applyCrop = () => {
+        const target = document.querySelector(selector);
+        if (!target) return false;
+        const chain = [];
+        let node = target;
+        while (node) {
+          chain.push(node);
+          if (node === document.body) break;
+          node = node.parentElement;
+        }
+        chain.reverse();
+        for (let i = 0; i < chain.length - 1; i++) {
+          const current = chain[i];
+          const next = chain[i + 1];
+          Array.from(current.children).forEach((child) => {
+            if (child !== next) {
+              child.style.display = "none";
+            }
+          });
+        }
+        target.style.width = "100%";
+        target.style.maxWidth = "100%";
+        return true;
+      };
+
+      if (applyCrop()) return;
+
+      const observer = new MutationObserver(() => {
+        if (applyCrop()) {
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+
+      setTimeout(() => observer.disconnect(), 10000);
+    })();
+  `;
+  collinsWebview.executeJavaScript(script, true);
+});
+
+merriamWebview.addEventListener("dom-ready", () => {
+  const script = `
+    (function () {
+      const selector = "#left-content";
+      const applyCrop = () => {
+        const target = document.querySelector(selector);
+        if (!target) return false;
+        const chain = [];
+        let node = target;
+        while (node) {
+          chain.push(node);
+          if (node === document.body) break;
+          node = node.parentElement;
+        }
+        chain.reverse();
+        for (let i = 0; i < chain.length - 1; i++) {
+          const current = chain[i];
+          const next = chain[i + 1];
+          Array.from(current.children).forEach((child) => {
+            if (child !== next) {
+              child.style.display = "none";
+            }
+          });
+        }
+        target.style.width = "100%";
+        target.style.maxWidth = "100%";
+        return true;
+      };
+
+      if (applyCrop()) return;
+
+      const observer = new MutationObserver(() => {
+        if (applyCrop()) {
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+
+      setTimeout(() => observer.disconnect(), 10000);
+    })();
+  `;
+  merriamWebview.executeJavaScript(script, true);
+});
+
 function searchWord() {
   const word = searchInput.value.trim();
 
